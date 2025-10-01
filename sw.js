@@ -5,7 +5,7 @@ self.addEventListener('install', () => self.skipWaiting());
 self.addEventListener('activate', e => e.waitUntil(clients.claim()));
 
 self.addEventListener('fetch', e => {
-  const path = new URL(e.request.url).pathname;
+  let path = new URL(e.request.url).pathname;
 
   // make sure it is on the correct domain
   if (!e.request.url.startsWith(self.location.origin)) {
