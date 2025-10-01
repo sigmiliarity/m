@@ -69,11 +69,11 @@ self.addEventListener('fetch', e => {
     },
     {
       // If no route matches, fallback to default route (github sigmiliarity/m repo with file path)
-      match: true,
-      handler: async ([]) => {
+      match: path.match(/^\/(.+)$/),
+      handler: async ([shortPath]) => {
         try {
-          const res = await fetch(`https://raw.githubusercontent.com/sigmiliarity/m/main/${path}`);
-          return setMimeType(res, path);
+          const res = await fetch(`https://raw.githubusercontent.com/sigmiliarity/m/main/${shortPath}`);
+          return setMimeType(res, shortPath);
         } catch {
           throw new Error('Failed to fetch fallback resource');
         }
