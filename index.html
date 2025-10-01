@@ -3,658 +3,708 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sigmiliarity - Developer Portfolio</title>
+    <title>67.is-a.dev</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #6366f1;
-            --secondary: #8b5cf6;
-            --accent: #ec4899;
-            --dark: #0f172a;
-            --darker: #020617;
-            --light: #f1f5f9;
-            --gray: #64748b;
-        }
-
+        /* Homepage specific styles */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
-            color: var(--light);
-            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        .homepage-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--background-color) 0%, rgba(18, 18, 18, 0.95) 100%);
         }
 
-        /* Animated Background */
-        .bg-animation {
+        /* Animated background */
+        .background-animation {
             position: fixed;
-            width: 100%;
-            height: 100%;
             top: 0;
             left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
             z-index: -1;
-            overflow: hidden;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 48, 48, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(102, 192, 244, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 48, 48, 0.05) 0%, transparent 50%);
+            animation: backgroundFloat 20s ease-in-out infinite;
         }
 
-        .bg-animation span {
-            position: absolute;
-            display: block;
-            width: 20px;
-            height: 20px;
-            background: rgba(99, 102, 241, 0.1);
-            animation: float 25s infinite;
-            border-radius: 50%;
-        }
-
-        .bg-animation span:nth-child(1) {
-            left: 10%;
-            animation-delay: 0s;
-            animation-duration: 20s;
-        }
-
-        .bg-animation span:nth-child(2) {
-            left: 20%;
-            animation-delay: 2s;
-            animation-duration: 15s;
-        }
-
-        .bg-animation span:nth-child(3) {
-            left: 30%;
-            animation-delay: 4s;
-        }
-
-        .bg-animation span:nth-child(4) {
-            left: 40%;
-            animation-delay: 6s;
-            animation-duration: 18s;
-        }
-
-        .bg-animation span:nth-child(5) {
-            left: 50%;
-            animation-delay: 8s;
-        }
-
-        .bg-animation span:nth-child(6) {
-            left: 60%;
-            animation-delay: 10s;
-            animation-duration: 22s;
-        }
-
-        .bg-animation span:nth-child(7) {
-            left: 70%;
-            animation-delay: 12s;
-        }
-
-        .bg-animation span:nth-child(8) {
-            left: 80%;
-            animation-delay: 14s;
-            animation-duration: 20s;
-        }
-
-        .bg-animation span:nth-child(9) {
-            left: 90%;
-            animation-delay: 16s;
-        }
-
-        @keyframes float {
-            0% {
-                bottom: -100px;
-                transform: translateX(0) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                bottom: 1080px;
-                transform: translateX(400px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        /* Header */
-        header {
-            padding: 20px 0;
-            position: sticky;
-            top: 0;
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid rgba(99, 102, 241, 0.2);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--light);
-            text-decoration: none;
-            transition: color 0.3s;
-            font-weight: 500;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
+        @keyframes backgroundFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(1deg); }
         }
 
         /* Hero Section */
         .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: relative;
             text-align: center;
-            padding: 100px 20px;
+            padding: 4rem 2rem 3rem;
+            margin: 0 1rem 3rem;
+            border-radius: 20px;
+            background: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            overflow: hidden;
         }
 
-        .hero-content h1 {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--primary-color), #ff6b6b, var(--primary-color));
+            background-size: 200% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: fadeInUp 1s ease;
+            animation: gradientShift 4s ease-in-out infinite;
+            text-shadow: 0 0 30px rgba(255, 48, 48, 0.3);
         }
 
-        .hero-content .subtitle {
-            font-size: 1.5rem;
-            color: var(--gray);
-            margin-bottom: 30px;
-            animation: fadeInUp 1s ease 0.2s backwards;
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
-        .github-link {
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 15px 35px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 12px;
             text-decoration: none;
-            border-radius: 50px;
             font-weight: 600;
-            transition: transform 0.3s, box-shadow 0.3s;
-            animation: fadeInUp 1s ease 0.4s backwards;
-        }
-
-        .github-link:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* About Section */
-        .about {
-            padding: 100px 20px;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 60px;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            margin: 20px auto;
-            border-radius: 2px;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .profile-image {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            border: 5px solid var(--primary);
-            box-shadow: 0 0 50px rgba(99, 102, 241, 0.3);
-            margin: 0 auto;
-            display: block;
-            object-fit: cover;
-        }
-
-        .about-text {
             font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--gray);
-        }
-
-        .about-text p {
-            margin-bottom: 20px;
-        }
-
-        /* Skills Section */
-        .skills {
-            padding: 100px 20px;
-            background: rgba(15, 23, 42, 0.5);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .skill-card {
-            background: rgba(99, 102, 241, 0.1);
-            padding: 30px;
-            border-radius: 15px;
-            border: 1px solid rgba(99, 102, 241, 0.2);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
-            border-color: var(--primary);
-        }
-
-        .skill-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-
-        .skill-card p {
-            color: var(--gray);
-        }
-
-        /* Projects Section */
-        .projects {
-            padding: 100px 20px;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .project-card {
-            background: rgba(15, 23, 42, 0.8);
-            border-radius: 15px;
+            transition: all 0.3s ease;
+            position: relative;
             overflow: hidden;
-            border: 1px solid rgba(99, 102, 241, 0.2);
-            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+        .cta-btn.primary {
+            background: linear-gradient(45deg, var(--primary-color), #ff6b6b);
+            color: white;
+            box-shadow: 0 10px 25px rgba(255, 48, 48, 0.3);
         }
 
-        .project-image {
+        .cta-btn.secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255, 48, 48, 0.4);
+        }
+
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
             width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
         }
 
-        .project-content {
-            padding: 25px;
-        }
-
-        .project-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: var(--light);
-        }
-
-        .project-content p {
-            color: var(--gray);
-            margin-bottom: 20px;
-        }
-
-        .project-link {
-            display: inline-block;
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        .project-link:hover {
-            color: var(--accent);
+        .cta-btn:hover::before {
+            left: 100%;
         }
 
         /* Stats Section */
-        .stats {
-            padding: 100px 20px;
-            background: rgba(15, 23, 42, 0.5);
-        }
-
-        .stats-grid {
+        .stats-section {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            text-align: center;
+            gap: 1.5rem;
+            margin: 0 1rem 3rem;
         }
 
-        .stat-item {
-            padding: 30px;
+        .stat-card {
+            background: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 48, 48, 0.2);
+            border-color: rgba(255, 48, 48, 0.3);
         }
 
         .stat-number {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: bold;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* Featured Games Section */
+        .featured-section {
+            margin: 0 1rem 3rem;
+            padding: 2rem;
+            border-radius: 20px;
+            background: rgba(18, 18, 18, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin: 0;
+            background: linear-gradient(45deg, var(--primary-color), #ff6b6b);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .stat-label {
-            color: var(--gray);
-            font-size: 1.1rem;
-            margin-top: 10px;
+        .section-subtitle {
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            font-size: 1rem;
         }
 
-        /* Contact Section */
-        .contact {
-            padding: 100px 20px;
+        .view-all-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .view-all-link:hover {
+            transform: translateX(5px);
+            color: #ff6b6b;
+        }
+
+        /* Game Grid */
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .game-card-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .game-card-wrapper:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(255, 48, 48, 0.25);
+            border-color: rgba(255, 48, 48, 0.3);
+        }
+
+        .game-card-wrapper::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.05);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+
+        .game-card-wrapper:hover::after {
+            transform: rotate(45deg) translate(50%, 50%);
+            opacity: 1;
+        }
+
+        .game-card-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            height: 100%;
+        }
+
+        .game-image {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .game-card-wrapper:hover .game-image {
+            transform: scale(1.1);
+        }
+
+        .game-info {
+            padding: 1rem;
             text-align: center;
         }
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 40px;
+        .game-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
-        .social-link {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: rgba(99, 102, 241, 0.1);
-            border: 2px solid var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: var(--primary);
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        .social-link:hover {
-            background: var(--primary);
+        .game-platform {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            background: var(--primary-color);
             color: white;
-            transform: scale(1.1) rotate(360deg);
+        }
+
+        /* Categories Section */
+        .categories-section {
+            margin: 0 1rem 3rem;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .category-card {
+            background: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), #ff6b6b, var(--primary-color));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .category-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .category-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(255, 48, 48, 0.2);
+            border-color: rgba(255, 48, 48, 0.3);
+        }
+
+        .category-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover .category-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .category-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .category-description {
+            color: var(--text-muted);
+            font-size: 0.95rem;
         }
 
         /* Footer */
-        footer {
-            padding: 40px 20px;
+        .footer {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem 1rem;
             text-align: center;
-            border-top: 1px solid rgba(99, 102, 241, 0.2);
-            color: var(--gray);
+            margin-top: 3rem;
         }
 
-        /* Responsive */
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .hero-content h1 {
+            .hero h1 {
                 font-size: 2.5rem;
             }
-
-            .hero-content .subtitle {
-                font-size: 1.2rem;
+            
+            .hero p {
+                font-size: 1.1rem;
             }
-
-            .about-content {
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .stats-section {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .game-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+            
+            .categories-grid {
                 grid-template-columns: 1fr;
             }
-
-            .nav-links {
-                gap: 15px;
-                font-size: 0.9rem;
-            }
-
-            .profile-image {
-                width: 200px;
-                height: 200px;
-            }
         }
 
-        /* Scroll Animation */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s, transform 0.8s;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+        @media (max-width: 480px) {
+            .hero {
+                margin: 0 0.5rem 2rem;
+                padding: 2rem 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .featured-section {
+                margin: 0 0.5rem 2rem;
+                padding: 1.5rem;
+            }
+            
+            .stats-section {
+                grid-template-columns: 1fr;
+                margin: 0 0.5rem 2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="bg-animation">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
+    <div class="homepage-container">
+        <div class="background-animation"></div>
+        
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="./" class="active">Home</a></li>
+                    <li><a href="./games.html?filter=ALL">All Games</a></li>
+                    <li class="dropdown">
+                        <a href="./games.html?filter=RETRO" class="dropdown-main">RETRO Games</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="./games.html?filter=NES" class="dropdown-item">NES</a></li>
+                            <li><a href="./games.html?filter=SNES" class="dropdown-item">SNES</a></li>
+                            <li><a href="./games.html?filter=GBA" class="dropdown-item">GBA</a></li>
+                            <li><a href="./games.html?filter=N64" class="dropdown-item">N64</a></li>
+                            <li><a href="./games.html?filter=GBC" class="dropdown-item">GBC</a></li>
+                            <li><a href="./games.html?filter=GB" class="dropdown-item">GB</a></li>
+                            <li><a href="./games.html?filter=DS" class="dropdown-item">DS</a></li>
+                            <li><a href="./games.html?filter=Sega_Genesis" class="dropdown-item">Sega Genesis</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="./games.html?filter=html">HTML Games</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    <header>
-        <nav class="container">
-            <div class="logo">sigmiliarity</div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section class="hero">
-        <div class="hero-content">
-            <h1>sigmiliarity</h1>
-            <p class="subtitle">Developer • Creator • Problem Solver</p>
-            <a href="https://github.com/sigmiliarity" class="github-link" target="_blank">
-                <svg width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                </svg>
-                View GitHub Profile
-            </a>
-        </div>
-    </section>
-
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title fade-in">About Me</h2>
-            <div class="about-content">
-                <img src="https://github.com/sigmiliarity.png" alt="sigmiliarity" class="profile-image fade-in">
-                <div class="about-text fade-in">
-                    <p>
-                        Welcome to my portfolio! I'm sigmiliarity, a passionate developer dedicated to creating 
-                        innovative solutions and building meaningful projects. With a focus on clean code and 
-                        user-centric design, I strive to deliver exceptional digital experiences.
-                    </p>
-                    <p>
-                        My journey in software development has been driven by curiosity and a constant desire 
-                        to learn. I enjoy tackling complex problems and transforming ideas into reality through 
-                        code. Whether it's front-end, back-end, or full-stack development, I'm always ready for 
-                        the next challenge.
-                    </p>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>67.is-a.dev</h1>
+                <p>Experience the golden age of gaming with our curated collection of retro, flash, and HTML5 games. No downloads, no hassle - just pure nostalgic gaming fun!</p>
+                <div class="cta-buttons">
+                    <a href="./games.html?filter=html" class="cta-btn primary">
+                        <i class="fas fa-gamepad"></i>
+                        View HTML Games
+                    </a>
+                    <a href="./games.html?filter=ALL" class="cta-btn secondary">
+                        <i class="fas fa-bolt"></i>
+                        Browse All Games
+                    </a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title fade-in">Skills & Technologies</h2>
-            <div class="skills-grid">
-                <div class="skill-card fade-in">
-                    <h3>🚀 Frontend Development</h3>
-                    <p>HTML, CSS, JavaScript, React, Vue.js, Responsive Design</p>
-                </div>
-                <div class="skill-card fade-in">
-                    <h3>⚙️ Backend Development</h3>
-                    <p>Node.js, Python, Express, REST APIs, Database Design</p>
-                </div>
-                <div class="skill-card fade-in">
-                    <h3>🛠️ DevOps & Tools</h3>
-                    <p>Git, Docker, CI/CD, Linux, Cloud Services</p>
-                </div>
-                <div class="skill-card fade-in">
-                    <h3>💡 Problem Solving</h3>
-                    <p>Algorithms, Data Structures, System Design, Code Optimization</p>
-                </div>
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="stat-card">
+                <div class="stat-number" id="retro-count">7385</div>
+                <div class="stat-label">Retro Games</div>
             </div>
-        </div>
-    </section>
-
-    <section class="stats">
-        <div class="container">
-            <h2 class="section-title fade-in">GitHub Stats</h2>
-            <div class="stats-grid">
-                <div class="stat-item fade-in">
-                    <div class="stat-number" id="repos">-</div>
-                    <div class="stat-label">Repositories</div>
-                </div>
-                <div class="stat-item fade-in">
-                    <div class="stat-number" id="followers">-</div>
-                    <div class="stat-label">Followers</div>
-                </div>
-                <div class="stat-item fade-in">
-                    <div class="stat-number" id="following">-</div>
-                    <div class="stat-label">Following</div>
-                </div>
-                <div class="stat-item fade-in">
-                    <div class="stat-number">100+</div>
-                    <div class="stat-label">Contributions</div>
-                </div>
+            <div class="stat-card">
+                <div class="stat-number" id="html-count">1016</div>
+                <div class="stat-label">HTML5 Games</div>
             </div>
-        </div>
-    </section>
+            <!--<div class="stat-card">
+                <div class="stat-number" id="flash-count">212</div>
+                <div class="stat-label">Flash Games</div>
+            </div>-->
+        </section>
 
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title fade-in">Get In Touch</h2>
-            <p class="fade-in" style="color: var(--gray); font-size: 1.2rem; margin-bottom: 20px;">
-                Let's collaborate and build something amazing together!
-            </p>
-            <div class="social-links">
-                <a href="https://github.com/sigmiliarity" class="social-link fade-in" target="_blank" title="GitHub">
-                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                    </svg>
+        <!-- Featured Retro Games --><!--
+        <section class="featured-section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Featured Retro Games</h2>
+                    <p class="section-subtitle">Classic games that defined generations</p>
+                </div>
+                <a href="./games.html?filter=RETRO" class="view-all-link">
+                    View All <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
-        </div>
-    </section>
+            <div class="game-grid" id="featured-retro-games">
+                <a href="" class="game-card" target="_blank">
+                    <img src="https://raw.githubusercontent.com/libretro-thumbnails/Nintendo_-_Nintendo_Entertainment_System/master/Named_Boxarts/Super%20Mario%20Bros.%20(World).png" alt="Super Mario Bros.">
+                    <div class="title">Super Mario Bros.</div>
+                </a>
+                <a href="" class="game-card" target="_blank">
+                    <img src="https://raw.githubusercontent.com/libretro-thumbnails/Nintendo_-_Nintendo_DS/master/Named_Boxarts/123%20Sesame%20Street%20-%20Cookie's%20Counting%20Carnival%20-%20The%20Videogame%20(USA).png" alt="123 Sesame Street - Cookie's Counting Carnival - The Videogame">
+                    <div class="title">123 Sesame Street - Cookie's Counting Carnival - The Videogame</div>
+                </a>
+                <a href="" class="game-card" target="_blank">
+                    <img src="https://raw.githubusercontent.com/libretro-thumbnails/Nintendo_-_Nintendo_Entertainment_System/master/Named_Boxarts/Castlevania%20(USA).png" alt="Castlevania">
+                    <div class="title">Castlevania</div>
+                </a>
+                <a href="" class="game-card" target="_blank">
+                    <img src="https://raw.githubusercontent.com/libretro-thumbnails/Nintendo_-_Nintendo_Entertainment_System/master/Named_Boxarts/Joust%20(USA).png" alt="Joust">
+                    <div class="title">Joust</div>
+                </a>
+                <a href="" class="game-card" target="_blank">
+                    <img src="https://raw.githubusercontent.com/libretro-thumbnails/Nintendo_-_Super_Nintendo_Entertainment_System/master/Named_Boxarts/Super%20Mario%20World%20(USA%2C%20Europe)%20(Virtual%20Console%2C%20Classic%20Mini%2C%20Switch%20Online).png" alt="Super Mario World">
+                    <div class="title">Super Mario World</div>
+                </a>
+            </div>
+        </section>-->
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 sigmiliarity | Hosted on 67.is-a.dev</p>
-        </div>
-    </footer>
+        <!-- Featured HTML Games -->
+        <section class="featured-section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Featured HTML Games</h2>
+                    <p class="section-subtitle">Browser classics preserved forever</p>
+                </div>
+                <a href="./games.html?filter=HTML" class="view-all-link">
+                    View All <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="game-grid" id="featured-html-games">
+                <a href="./m/a2/semag/amazing-rope-police/index.html" class="game-card" target="_blank">
+                    <img src="/gitlab/skysthelimit.dev/selenite/semag/amazing-rope-police/splash.jpeg" alt="Amazing Rope Police">
+                    <div class="title">Amazing Rope Police</div>
+                </a>
+                <a href="./m/a2/semag/golddiggerfrvr/index.html" class="game-card" target="_blank">
+                    <img src="/gitlab/skysthelimit.dev/selenite/semag/golddiggerfrvr/images.jpeg" alt="Gold Digger FRVR">
+                    <div class="title">Gold Digger FRVR</div>
+                </a>
+                <a href="./m/a1/gunspin/index.html" class="game-card" target="_blank">
+                    <img src="/github/MINECRAFTGOLDFISH3/assets/gunspin/cover.png" alt="Gunspin">
+                    <div class="title">Gunspin</div>
+                </a>
+                <a href="./m/a2/semag/rooftopsnipers/index.html" class="game-card" target="_blank">
+                    <img src="/gitlab/skysthelimit.dev/selenite/semag/rooftopsnipers/logo.png" alt="Rooftop Snipers">
+                    <div class="title">Rooftop Snipers</div>
+                </a>
+                <a href="./m/a1/zigzag/index.html" class="game-card" target="_blank">
+                    <img src="/github/MINECRAFTGOLDFISH3/assets/zig-zag/cover.png" alt="Zig Zag">
+                    <div class="title">Zig Zag</div>
+                </a>
+            </div>
+        </section>
 
+        <!-- Game Categories -->
+        <section class="featured-section categories-section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Game Collections</h2>
+                    <p class="section-subtitle">Explore games by platform and genre</p>
+                </div>
+            </div>
+            <div class="categories-grid">
+                <a href="./games.html?filter=NES" class="category-card">
+                    <div class="category-icon"><i class="fas fa-gamepad"></i></div>
+                    <h3 class="category-title">NES Classics</h3>
+                    <p class="category-description">8-bit Nintendo masterpieces that started it all</p>
+                </a>
+                <a href="./games.html?filter=SNES" class="category-card">
+                    <div class="category-icon"><i class="fas fa-gamepad"></i></div>
+                    <h3 class="category-title">SNES Games</h3>
+                    <p class="category-description">16-bit Super Nintendo gaming excellence</p>
+                </a>
+                <a href="./games.html?filter=GBA" class="category-card">
+                    <div class="category-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3 class="category-title">Game Boy Advance</h3>
+                    <p class="category-description">Portable gaming at its finest</p>
+                </a>
+                <a href="./games.html?filter=HTML" class="category-card">
+                    <div class="category-icon"><i class="fas fa-code"></i></div>
+                    <h3 class="category-title">HTML5 Games</h3>
+                    <p class="category-description">Modern browser-based gaming</p>
+                </a>
+                <a href="./games.html?filter=Sega_Genesis" class="category-card">
+                    <div class="category-icon"><i class="fas fa-gamepad"></i></div>
+                    <h3 class="category-title">Sega Genesis</h3>
+                    <p class="category-description">Blast processing and pure 90s nostalgia</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="./privacy.txt">Privacy Policy</a>
+                </div>
+                <p>&copy; 2025 67.is-a.dev. Games are property of their respective owners.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
     <script>
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js').catch(function(error) {
+                    console.error('Service Worker registration failed:', error);
+                });
             });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+        } else {
+            alert('Service Workers are not supported in this browser. Please use a modern browser for the best experience.');
+        }
+        // Add some interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate stats on scroll
+            const observerOptions = {
+                threshold: 0.5,
+                rootMargin: '0px 0px -100px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const statNumber = entry.target.querySelector('.stat-number');
+                        if (statNumber && !statNumber.classList.contains('animated')) {
+                            statNumber.classList.add('animated');
+                            animateNumber(statNumber);
+                        }
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.stat-card').forEach(card => {
+                observer.observe(card);
             });
+            
+            function animateNumber(element) {
+                const finalNumber = parseInt(element.textContent);
+                const suffix = element.textContent.replace(/[0-9]/g, '');
+                let current = 0;
+                const increment = finalNumber / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= finalNumber) {
+                        current = finalNumber;
+                        clearInterval(timer);
+                    }
+                    element.textContent = Math.floor(current) + suffix;
+                }, 30);
+            }
         });
-
-        // Fetch GitHub stats
-        fetch('https://api.github.com/users/sigmiliarity')
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('repos').textContent = data.public_repos || '-';
-                document.getElementById('followers').textContent = data.followers || '-';
-                document.getElementById('following').textContent = data.following || '-';
-            })
-            .catch(error => {
-                console.log('Error fetching GitHub stats:', error);
-            });
     </script>
 </body>
 </html>

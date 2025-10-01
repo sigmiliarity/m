@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>67.is-a.dev</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <nav>
+      <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/games.html?filter=ALL">All Games</a></li>
+          <li class="dropdown">
+              <a href="/games.html?filter=RETRO" class="dropdown-main">RETRO Games</a>
+              <ul class="dropdown-menu">
+                  <li><a href="/games.html?filter=NES" class="dropdown-item">NES</a></li>
+                  <li><a href="/games.html?filter=SNES" class="dropdown-item">SNES</a></li>
+                  <li><a href="/games.html?filter=GBA" class="dropdown-item">GBA</a></li>
+                  <li><a href="/games.html?filter=N64" class="dropdown-item">N64</a></li>
+                  <li><a href="/games.html?filter=GBC" class="dropdown-item">GBC</a></li>
+                  <li><a href="/games.html?filter=GB" class="dropdown-item">GB</a></li>
+                  <li><a href="/games.html?filter=DS" class="dropdown-item">DS</a></li>
+                  <li><a href="/games.html?filter=Sega_Genesis" class="dropdown-item">Sega Genesis</a></li>
+              </ul>
+          </li>
+          <li><a href="/games.html?filter=html">HTML Games</a></li>
+      </ul>
+  </nav>
+  <input type="text" class="search-bar" id="searchInput" placeholder="Search games..." autocomplete="off">
+  <div id="badgeFilter">
+    <span class="badge disabled" id="badgeFilterAll">All</span>
+  </div>
+</header>
+
+<div id="scrollArea" class="clusterize">
+  <div class="game-list">
+    <div id="contentArea" class="clusterize-content"></div>
+  </div>
+</div>
+
+<style>
+  body {
+    overflow: hidden;
+  }
+</style>
+
+<script src="clusterize.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

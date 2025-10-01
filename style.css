@@ -1,0 +1,380 @@
+:root {
+    --primary-color: #ff3030;
+    --primary-hover: #ff5050;
+    --background-color: #121212;
+    --box-shadow-color: rgba(30, 30, 30, 0.8);
+    --text-color: #ffffff;
+    --text-muted: #aaaaaa;
+}
+
+:root[data-theme="default"] {
+    --primary-color: #66c0f4;
+    --secondary-color: #2a3f5f;
+    --background-color: #1b2838;
+    --text-color: #c7d5e0;
+    --box-shadow-color: rgba(102, 192, 244, 0.4);
+}
+
+:root[data-theme="gold"] {
+    --primary-color: #e4c56c;
+    --secondary-color: #2c2f33;
+    --background-color: #181a1b;
+    --text-color: #f0f0f0;
+    --box-shadow-color: rgba(228, 197, 108, 0.4);
+}
+
+:root[data-theme="forest"] {
+    --primary-color: #5a8a4d;
+    --secondary-color: #4a443d;
+    --background-color: #2a3d2d;
+    --text-color: #e0e0d8;
+    --box-shadow-color: rgba(90, 138, 77, 0.4);
+}
+
+:root[data-theme="cyberpunk"] {
+    --primary-color: #00f0ff;
+    --secondary-color: #2a004f;
+    --background-color: #0d021a;
+    --text-color: #f0f0ff;
+    --box-shadow-color: rgba(0, 240, 255, 0.4);
+}
+
+/* Header and Navigation */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1.25rem;
+    margin: 0 2.5rem 1rem 2.5rem;
+    backdrop-filter: blur(10px);
+    background-color: rgba(18, 18, 18, 0.6);
+    border-radius: 0px 0px 12px 12px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 0.75rem;
+}
+
+nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    transition: all 0.25s ease;
+}
+
+nav a:hover {
+    background-color: rgba(255, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.active {
+    background-color: rgba(255, 0, 0, 0.7);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+}
+
+body {
+    margin: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: sans-serif;
+}
+
+.clusterize {
+    width: 100%;
+    height: calc(100vh - 80px);
+    overflow-y: auto;
+    scrollbar-color: var(--secondary-color) var(--background-color);
+    scrollbar-width: thin;
+}
+
+.search-bar {
+    width: 50%;
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 16px;
+    color: #fff;
+    outline: none;
+    backdrop-filter: blur(10px);
+    transition: all 0.2s ease-in-out;
+    text-align: center;
+}
+
+.search-bar:focus {
+    border-color: var(--primary-color);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+#badgeFilter {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    user-select: none;
+}
+
+#badgeFilter span {
+    cursor: pointer;
+}
+
+#badgeFilter span.disabled {
+    opacity: 0.5;
+}
+
+/* Badge Stack Styles */
+.badge-stack-container {
+    position: relative;
+    display: inline-block;
+}
+
+.badge-stack-main {
+    position: relative;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.badge-stack-hidden {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-top: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 20;
+}
+
+.badge-stack-container:hover .badge-stack-hidden {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(4px);
+}
+
+.badge-stack-item {
+    position: relative;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.badge-stack-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+}
+
+.badge-stack-container:hover .badge-stack-main {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Add a subtle indicator that badges are stackable */
+.badge-stack-main::after {
+    content: '▼';
+    font-size: 0.6em;
+    margin-left: 4px;
+    opacity: 0.7;
+    transition: transform 0.3s ease;
+}
+
+.badge-stack-container:hover .badge-stack-main::after {
+    transform: rotate(180deg);
+}
+
+/* Ensure proper stacking order */
+.badge-stack-container, .dropdown {
+    z-index: 15;
+}
+
+.badge-stack-container:hover, .dropdown:hover {
+    z-index: 25;
+}
+
+/* Navigation dropdown - extends badge stack system */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-main {
+    position: relative;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px 0;
+    margin: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 20;
+    min-width: 120px;
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(4px);
+}
+
+.dropdown-menu li {
+    list-style: none;
+    margin: 0;
+}
+
+.dropdown-item {
+    display: inline-block;
+    font-size: 0.75rem;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white !important;
+    text-decoration: none;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.dropdown-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+}
+
+.dropdown:hover .dropdown-main {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Add dropdown indicator - extends badge stack indicator */
+.dropdown-main::after {
+    content: '▼';
+    font-size: 0.6em;
+    margin-left: 4px;
+    opacity: 0.7;
+    transition: transform 0.3s ease;
+}
+
+.dropdown:hover .dropdown-main::after {
+    transform: rotate(180deg);
+}
+
+.game-list {
+    padding: 24px;
+}
+
+#contentArea {
+    display: block;
+}
+
+.game-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.game-card {
+    background-color: var(--secondary-color);
+    width: 184px;
+    height: 240px;
+    border-radius: 4px;
+    overflow: hidden;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+    text-decoration: none;
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.game-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(255, 48, 48, 0.3), 0 0 15px rgba(255, 48, 48, 0.15);
+}
+
+/* Add a nice shine effect on hover */
+.game-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 20%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(30deg);
+  transition: transform 0.7s;
+  opacity: 0;
+}
+
+.game-card:hover::after {
+  transform: rotate(30deg) translateX(300%);
+  opacity: 0.3;
+  transition: transform 0.7s, opacity 0.6s;
+}
+
+.game-card img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    background-color: var(--background-color);
+}
+
+.game-card .title {
+    padding: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    line-height: 1.3;
+}
+
+.badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    margin-right: 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.game-card .badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 2;
+}
