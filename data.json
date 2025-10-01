@@ -2,7 +2,7 @@
     {
         "name": "HTML",
         "location": "/games.json",
-        "handler": "return {id: 'H' + i * 1000 + j + 1,title: game[0],url: group.path + game[1] + '/index.html',img: group.path + game[1] + '/' + (game[2] || group.image),type:'html'}",
+        "handler": "return {id: 'H' + i * 1000 + j + 1,title: game[0],url: group.path + game[1] + '/',img: group.path + game[1] + '/' + (game[2] || group.image),type:'html'}",
         "groups": [["html","orange"]]
     },
     {
